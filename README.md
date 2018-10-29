@@ -17,4 +17,4 @@ After the first time, use:
 
 This creates a docker container for the application and the db and creates the database based on the schema. It should only create the db once i.e. it won't create a new one every time you run this.
 
-Code isn't particularly resilient and no tests are included, however, there is a really slick looking frontend which makes up for it.
+The code isn't particularly resilient and no tests are included, however, there is a really slick looking frontend which makes up for it.
