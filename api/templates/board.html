@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Noughts and Crosses</title>
+        <style>
+            body {background-color: powderblue;}
+            td 
+            {
+                text-align: center; 
+                vertical-align: middle;
+            }
+            .flashes {color: red}
+        </style>
+    </head>
+
+    <body>
+
+        <h1>
+            Noughts and Crosses
+        </h1>
+
+        <h3>
+            Status: {{ games.status }}
+        </h3>
+        
+        {% if games.player_turn == 1 %}
+            <p>Crosses to move</p>
+        {% else %}
+            <p>Noughts to move</p>
+        {% endif %}
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class=flashes>
+          {% for message in messages %}
+            <p>
+                {{ message }}
+            </p> 
+          {% endfor %}
+          </div>
+        {% endif %}
+        {% endwith %}
+
+        {% if games.status == 'In progress' %}
+            <p>
+                Select square
+            </p>
+            <form action="" method="post">
+                <select name="tile" size="6" multiple>
+                    <option value="tile_1">Top left</option>
+                    <option value="tile_2">Top centre</option>
+                    <option value="tile_3">Top right</option>
+                    <option value="tile_4">Middle left</option>
+                    <option value="tile_5">Middle centre</option>
+                    <option value="tile_6">Middle right</option>
+                    <option value="tile_7">Bottom left</option>
+                    <option value="tile_8">Bottom centre</option>
+                    <option value="tile_9">Bottom right</option>
+                </select>
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+
+        <table rules="all" width=150 height=100>
+            <tbody>
+            <tr>
+                <td>{{ games.tile_1}}</td>
+                <td>{{ games.tile_2 }}</td>
+                <td>{{ games.tile_3 }}</td>
+            </tr>
+            <tr>
+                <td>{{ games.tile_4}}</td>
+                <td>{{ games.tile_5 }}</td>
+                <td>{{ games.tile_6 }}</td>
+            </tr>		
+            <tr>
+                <td>{{ games.tile_7}}</td>
+                <td>{{ games.tile_8 }}</td>
+                <td>{{ games.tile_9 }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <form action= "{{ url_for('refresh') }}">
+            <input type="submit" value="New game">
+        </form>
+
+    </body>
+</html>

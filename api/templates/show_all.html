@@ -1,0 +1,44 @@
+<html>
+    <head>
+	<title>Foo</title>
+    </head>
+    <body>
+	<h3>
+	    <a href="{{ url_for('home') }}">Example</a>
+	</h3>
+
+
+	<form action="{{ request.path }}" method="post">
+	    Name:<br>
+	    <input type="text" name="name"><br>
+	    City:<br>
+	    <input type="text" name="city"><br>
+	    Address:<br>
+	    <input type="text" name="addr"><br>
+	    <input type="submit" value="Submit">
+	</form>
+
+
+	<table>
+	    <thead>
+		<tr>
+		    <th>Name</th>
+		    <th>City</th>
+		    <th>Address</th>
+		</tr>
+	    </thead>
+
+	    <tbody>
+	    {% for game in games %}
+		<tr>
+		    <td>{{ game.status }}</td>
+		    <td>{{ game.player_turn }}</td>
+		    <td>{{ game.tile_1 }}</td>
+		</tr>
+	    {% endfor %}
+	    </tbody>
+	</table>
+
+
+    </body>
+</html>
